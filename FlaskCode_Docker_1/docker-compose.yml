@@ -9,6 +9,8 @@ services:
       MYSQL_PASSWORD: Frds@123
     ports:
       - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
 
   flaskapp:
     build: .
@@ -21,4 +23,6 @@ services:
       - .:/app
     command: sh -c "python app.py"
 
+volumes:
+  mysql_data:
 
