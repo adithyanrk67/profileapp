@@ -1,0 +1,24 @@
+services:
+  db:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: RootPassword
+      MYSQL_DATABASE: profileapp_db
+      MYSQL_USER: profileapp_user
+      MYSQL_PASSWORD: Frds@123
+    ports:
+      - "3306:3306"
+
+  flaskapp:
+    build: .
+    ports:
+      - "5000:5000"
+    depends_on:
+      - db
+    restart: always
+    volumes:
+      - .:/app
+    command: sh -c "python app.py"
+
+
