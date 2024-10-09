@@ -1,11 +1,10 @@
 services:
   flaskapp:
     build: .
+    image: profile  # Specify the image name and tag
     ports:
       - "5000:5000"
     restart: always
     volumes:
       - .:/app
     command: sh -c "python app.py"
-
-
